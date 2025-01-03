@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-
+use App\Models\Employer;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +20,7 @@ class jobFactory extends Factory
     {
         return [
             'title' => $this->faker->jobTitle(),
+            'employer_id' => Employer::factory(),
             'salary' => '$500,000 USD'
         ];
     }
