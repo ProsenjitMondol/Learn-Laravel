@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
+
 class Tag extends Model
 {
     /** @use HasFactory<\Database\Factories\TagFactory> */
     use HasFactory;
+    
 
     public function jobs()
     {
-        return $this->belongsToMany(Job::class,'job_tag', 'tag_id',"job_listing_id");
+        return $this->belongsToMany(Job::class,relatedPivotKey:'job_listing_id');
     }
 }
