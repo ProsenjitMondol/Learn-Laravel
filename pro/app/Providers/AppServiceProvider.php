@@ -24,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
     {
        Model::preventLazyLoading();
 
-       Paginator::useBootstrapFive();
+       //Paginator::useBootstrapFive();
     }
 }
