@@ -4,12 +4,18 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Translation\ArrayLoader;
 use App\Models\Job;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\SessionController;
+use App\Jobs\TranslateJob;
 
 
 Route::get('/', function () {
     
     return view('home');
 });
+
+//index
 
 Route::get('/jobs', function () {
     $jobs = Job::with('employer')->latest()->cursorPaginate(3);
@@ -19,9 +25,15 @@ Route::get('/jobs', function () {
     ]);
 });
 
+
+//create
+
 Route::get('/jobs/create',function(){
     return view('jobs.create');
 });
+
+
+//show
 
 Route::get('/jobs/{id}', function ($id) {
         
@@ -29,6 +41,9 @@ Route::get('/jobs/{id}', function ($id) {
         
         return view('jobs.show' ,['job' => $job]);
 });
+
+
+//store 
 
 Route::post('/jobs',function(){
    //dd(request('title'));
@@ -51,6 +66,13 @@ Route::post('/jobs',function(){
    return redirect('/jobs');
 });
 
+
+Route::get('/jobs/{id}/edit', function ($id) {
+        
+    $job=Job::find($id);
+        
+        return view('jobs.edit' ,['job' => $job]);
+});
 
 Route::get('/contact', function () {
     return view('contact');
