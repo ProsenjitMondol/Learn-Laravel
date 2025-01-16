@@ -10,4 +10,8 @@
         This job pays {{ $job['salary'] }} per year.
     </p>
 
+    <p class="mt-6">
+        <x-button herf="">Edit Job</x-button>
+    </p>
+
 </x-layout>
