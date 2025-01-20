@@ -26,7 +26,7 @@ Route::get('/jobs', function () {
 });
 
 
-//create
+//create                           
 
 Route::get('/jobs/create',function(){
     return view('jobs.create');
@@ -37,7 +37,7 @@ Route::get('/jobs/create',function(){
 
 Route::get('/jobs/{id}', function ($id) {
         
-    $job=Job::find($id);
+    $job=Job::find($id);                
         
         return view('jobs.show' ,['job' => $job]);
 });
