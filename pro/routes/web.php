@@ -67,12 +67,30 @@ Route::post('/jobs',function(){
 });
 
 
+// Edit
+
 Route::get('/jobs/{id}/edit', function ($id) {
         
     $job=Job::find($id);                
         
         return view('jobs.edit' ,['job' => $job]);
 });
+
+// Update
+Route::patch('/jobs/{id}', function ($id) {
+        // validate
+        // authorite (On hold...)
+        // update the job
+        //and persist
+        // redrict to the job page
+});
+
+// Destroy
+Route::delete('/jobs/{id}', function ($id) {
+        
+    
+});
+
 
 Route::get('/contact', function () {
     return view('contact');
