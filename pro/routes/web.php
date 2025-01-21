@@ -110,8 +110,15 @@ Route::patch('/jobs/{id}', function ($id) {
 
 // Destroy
 Route::delete('/jobs/{id}', function ($id) {
-        
-    //
+
+    // authorite (On hold...)
+
+    // delete the job
+    Job::findOrFail($id) -> delete(); //$job -> delete();
+    
+
+    // redrict 
+    return redirect('/jobs');
 });
 
 
