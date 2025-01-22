@@ -65,7 +65,7 @@
     <div class="mt-6 flex items-center justify-between gap-x-6">
 
     <div class="flex items-center">
-    <button form="delete-form" class="text-red-500 text-sm font-bold">Delete</button>
+    <button class="text-red-500 text-sm font-bold">Delete</button>
     </div>
 
     <div class="flex items-center gap-x-6">
