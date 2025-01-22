@@ -114,7 +114,7 @@ Route::delete('/jobs/{id}', function ($id) {
     // authorite (On hold...)
 
     // delete the job
-    Job::findOrFail($id) -> delete(); //$job -> delete();
+    Job::findOrFail($id) -> delete(); //$job -> delete(); 
     
 
     // redrict 
