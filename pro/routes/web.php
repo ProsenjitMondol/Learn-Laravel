@@ -33,13 +33,15 @@ Route::get('/jobs/create',function(){
 });
 
 
+// Route::get('posts/{post}');
+
 //show
 
-Route::get('/jobs/{id}', function ($id) {
+Route::get('/jobs/{job}', function (Job $job) {
         
-    $job=Job::find($id);                
+    //$job=Job::find($id);                
         
-        return view('jobs.show' ,['job' => $job]);
+     return view('jobs.show' ,['job' => $job]);
 });
 
 
