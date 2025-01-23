@@ -16,14 +16,14 @@ Route::get('/', function () {
 });
 
 //index
-
-Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->latest()->cursorPaginate(3);
+Route::get('/jobs',[JobController::class, 'index']);
+// Route::get('/jobs', function () {
+//     $jobs = Job::with('employer')->latest()->cursorPaginate(3);
     
-    return view('jobs.index', [
-        'jobs' => $jobs
-    ]);
-});
+//     return view('jobs.index', [
+//         'jobs' => $jobs
+//     ]);
+// });
 
 
 //create                           
@@ -71,15 +71,15 @@ Route::post('/jobs',function(){
 
 // Edit
 
-Route::get('/jobs/{id}/edit', function ($id) {
+Route::get('/jobs/{job}/edit', function (Job $job) {
         
-    $job=Job::find($id);                
+   // $job=Job::find($id);                
         
         return view('jobs.edit' ,['job' => $job]);
 });
 
 // Update
-Route::patch('/jobs/{id}', function ($id) {
+Route::patch('/jobs/{job}', function (Job $job) {
         // validate
         request()->validate([
             'title'=>['required','min:3'],
@@ -91,7 +91,7 @@ Route::patch('/jobs/{id}', function ($id) {
 
         // update the job
 
-        $job=Job::findOrFail($id);
+        // $job=Job::findOrFail($id);
         // $job->title = request('title');
         // $job->salary = request('salary');
         // $job->save();
@@ -111,12 +111,12 @@ Route::patch('/jobs/{id}', function ($id) {
 });
 
 // Destroy
-Route::delete('/jobs/{id}', function ($id) {
+Route::delete('/jobs/{job}', function (Job $job) {
 
     // authorite (On hold...)
 
     // delete the job
-    Job::findOrFail($id) -> delete(); //$job -> delete(); 
+    $job -> delete();  //Job::findOrFail($id) -> delete();
     
 
     // redrict 
