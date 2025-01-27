@@ -15,7 +15,7 @@
         <div class="sm:col-span-4">
           <x-form-label for="title">Title</x-form-label>
           <div class="mt-2">
-            <x-form-input name="title" id="title" placeholder="CEO" required/>
+            <x-form-input name="title" id="title" placeholder="CEO"/>
 
            <x-form-error name="title" />
           </div>
