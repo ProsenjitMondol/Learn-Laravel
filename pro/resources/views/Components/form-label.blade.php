@@ -1,3 +1,1 @@
-<div>
-    <!-- It is never too late to be what you might have been. - George Eliot -->
-</div>
+<label {{ $attributes->merge(['class'=>'block text-sm/6 font-medium text-gray-900']) }}>{{ $slot }}</label>
