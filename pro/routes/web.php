@@ -14,6 +14,7 @@ use Illuminate\Types\Relations\Role;
 
 Route::view('/', 'home');
 Route::view('/contact', 'contact');
+Route::resource('jobs',JobController::class);
 
 // Route::controller(JobController::class)->group(function () {
 //     Route::get('/jobs',  'index');
@@ -25,5 +26,7 @@ Route::view('/contact', 'contact');
 //     Route::delete('/jobs/{job}', 'destroy');
 // });
 
-Route::resource('jobs',JobController::class);
 
+
+//Auth
+Route::get('/register',[RegisteredUserController::class, 'create']);
