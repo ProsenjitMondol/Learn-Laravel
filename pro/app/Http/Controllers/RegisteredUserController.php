@@ -13,6 +13,6 @@ class RegisteredUserController extends Controller
     }
 
     public function store(){
-        dd(request()->all());
+        dd('todo!');
     }
 }
