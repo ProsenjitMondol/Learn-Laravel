@@ -11,11 +11,11 @@
       
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <x-form-field>
-            <x-form-label for="title">Title</x-form-label>
+            <x-form-label for="name">Name</x-form-label>
             <div class="mt-2">
-              <x-form-input name="title" id="title" placeholder="CEO" />
+              <x-form-input name="name" id="title"/>
 
-              <x-form-error name="title" />
+              <x-form-error name="name" />
             </div>
           </x-form-field>
         
@@ -23,11 +23,11 @@
       </div>
 
           <x-form-field>
-            <x-form-label for="salary">Salary</x-form-label>
+            <x-form-label for="email">Email</x-form-label>
             <div class="mt-2">
-              <x-form-input name="salary" id="salary" placeholder="$50,000" />
+              <x-form-input name="email" id="email" type="email" />
 
-              <x-form-error name="salary" />
+              <x-form-error name="email" />
             </div>
           </x-form-field>
 
