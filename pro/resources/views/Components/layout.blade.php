@@ -28,10 +28,11 @@
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
 
-          @guest
+                   
             <x-nav-link href="/login" :active="request()->is('login')">Log In</x-nav-link>
             <x-nav-link href="/register" :active="request()->is('register')">Register</x-nav-link>
-          @endguest
+            
+
           </div>
         </div>
         <div class="-mr-2 flex md:hidden">

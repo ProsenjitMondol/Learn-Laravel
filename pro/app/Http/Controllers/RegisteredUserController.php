@@ -15,6 +15,7 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+    // protected $guarded=[];
     public function store()
     {
         // validation
