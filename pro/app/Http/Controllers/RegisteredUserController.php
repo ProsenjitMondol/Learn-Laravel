@@ -13,6 +13,12 @@ class RegisteredUserController extends Controller
     }
 
     public function store(){
-        dd('todo!');
+        // validation
+        request()->validate([
+            
+        ]);
+        //create the user
+        // log in
+        // redirect somewhere
     }
 }
