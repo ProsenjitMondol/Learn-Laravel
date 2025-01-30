@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -51,12 +52,17 @@ class JobController extends Controller
         return redirect('/jobs');
     }
 
-    public function edit(Job $job) {
-        // $job=Job::find($id); 
-        return view('jobs.edit' ,['job' => $job]);
+    public function edit(Job $job)
+    {
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
+        // $job=Job::find($id);
+        return view('jobs.edit', ['job' => $job]);
     }
 
-    public function update(Job $job) {
+    public function update(Job $job)
+    {
         request()->validate([
             'title' => ['required', 'min:3'],
             'salary' => ['required']
@@ -85,14 +91,15 @@ class JobController extends Controller
         return redirect('/jobs/' . $job->id);
     }
 
-    public function destroy(Job $job) {
+    public function destroy(Job $job)
+    {
         // authorite (On hold...)
 
-    // delete the job
-    $job->delete();  //Job::findOrFail($id) -> delete();
+        // delete the job
+        $job->delete();  //Job::findOrFail($id) -> delete();
 
 
-    // redrict 
-    return redirect('/jobs');
+        // redrict
+        return redirect('/jobs');
     }
 }
