@@ -11,6 +11,9 @@ use App\Http\Controllers\SessionController;
 use App\Jobs\TranslateJob;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Types\Relations\Role;
+use App\Http\Controllers\Auth\LoginController;
+
+
 
 Route::view('/', 'home');
 Route::view('/contact', 'contact');
@@ -26,13 +29,15 @@ Route::resource('jobs', JobController::class);
 //     Route::delete('/jobs/{job}', 'destroy');
 // });
 
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware('auth');
 
 
 //Auth
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
-Route::get('/login', [SessionController::class,'create']);
+// Route::get('/login', [SessionController::class,'create']);
+Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class,'store']);
 
-Route::post('/logout', [SessionController::class,'destroy']);
+Route::post('/logout', [SessionController::class,'destroy'])->name('logout');
