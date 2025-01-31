@@ -12,12 +12,14 @@ use App\Jobs\TranslateJob;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Types\Relations\Role;
 use App\Http\Controllers\Auth\LoginController;
-
-
+use Pest\Plugins\Only;
 
 Route::view('/', 'home');
 Route::view('/contact', 'contact');
-Route::resource('jobs', JobController::class);
+
+Route::resource('jobs', JobController::class)->Only(['index','show']);
+Route::resource('jobs', JobController::class)->except(['index','show'])->middleware('auth');
+
 
 // Route::controller(JobController::class)->group(function () {
 //     Route::get('/jobs',  'index');

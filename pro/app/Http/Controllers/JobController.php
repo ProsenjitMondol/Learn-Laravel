@@ -111,6 +111,8 @@ class JobController extends Controller
     public function destroy(Job $job)
     {
         // authorite (On hold...)
+        
+        Gate::authorize('edit-job', $job);
 
         // delete the job
         $job->delete();  //Job::findOrFail($id) -> delete();
