@@ -70,6 +70,7 @@
         <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
         <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
       </div>
+      
       <div class="border-t border-gray-700 pb-3 pt-4">
         <div class="flex items-center px-5">
           <div class="shrink-0">
