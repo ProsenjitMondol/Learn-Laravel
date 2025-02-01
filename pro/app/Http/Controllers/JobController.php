@@ -72,7 +72,7 @@ class JobController extends Controller
 
         
         
-        Gate::authorize('edit-job', $job);
+        // Gate::authorize('edit-job', $job);
 
         return view('jobs.edit', ['job' => $job]);
     }
@@ -83,7 +83,7 @@ class JobController extends Controller
     public function update(Job $job)
     {
         Gate::authorize('edit-job', $job);
-        
+
         request()->validate([
             'title' => ['required', 'min:3'],
             'salary' => ['required']
