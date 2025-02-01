@@ -69,6 +69,8 @@ class JobController extends Controller
         //     return redirect()->route('login');
 
         // }
+
+        
         
         Gate::authorize('edit-job', $job);
 
@@ -80,6 +82,8 @@ class JobController extends Controller
 
     public function update(Job $job)
     {
+        Gate::authorize('edit-job', $job);
+        
         request()->validate([
             'title' => ['required', 'min:3'],
             'salary' => ['required']

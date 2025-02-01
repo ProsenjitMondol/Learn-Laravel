@@ -17,21 +17,21 @@ use Pest\Plugins\Only;
 Route::view('/', 'home');
 Route::view('/contact', 'contact');
 
-Route::resource('jobs', JobController::class)->Only(['index','show']);
-Route::resource('jobs', JobController::class)->except(['index','show'])->middleware('auth');
+// Route::resource('jobs', JobController::class)->Only(['index','show']);
+// Route::resource('jobs', JobController::class)->except(['index','show'])->middleware('auth');
 
 
-// Route::controller(JobController::class)->group(function () {
-//     Route::get('/jobs',  'index');
-//     Route::get('/jobs/create', 'create');
-//     Route::get('/jobs/{job}','show');
-//     Route::post('/jobs',  'store');
-//     Route::get('/jobs/{job}/edit', 'edit');
-//     Route::patch('/jobs/{job}',  'update');
-//     Route::delete('/jobs/{job}', 'destroy');
-// });
+Route::controller(JobController::class)->group(function () {
+    Route::get('/jobs', [JobController::class , 'index']);
+    Route::get('/jobs/create', [JobController::class ,'create']);
+    Route::get('/jobs/{job}', [JobController::class ,'show']);
+    Route::post('/jobs', [JobController::class ,'store'])->middleware('auth');
+    Route::get('/jobs/{job}/edit', [JobController::class ,'edit'])->middleware('auth');
+    Route::patch('/jobs/{job}', [JobController::class ,'update']);
+    Route::delete('/jobs/{job}', [JobController::class ,'destroy']);
+});
 
-Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware('auth');
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware(['auth', 'can:edit-job, job']);
 
 
 //Auth
